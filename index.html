@@ -19,7 +19,7 @@
 </head>
 
 <body>
-  <div id="subRegion">
+  <div id="allContainer">
     <div id="programmeName">
       B[ORDERS]
     </div>
@@ -37,32 +37,119 @@
         <img src="images/chip_B.png" alt="microchip 2">
       </div>
     </div>
-    <div class="infoLine">
+    <!-- <div class="infoLine">
       We communicate via: <a href="http://zulip.fuzzy-binaires.org/" target="_blank"> Zulip </a>
-    </div>
+    </div> -->
 
+    <div id="thumbContainer">
 
-    <div id="zineContainer">
+      <!-- ZINE THUMBS  -->
+
       <div class="zine">
+        <div class="zineImage">
+          <img src="zines/thumbs/zine1_thumb.jpg">
+        </div>
         <div class="zineInfo">
           Drawings done during the 1 week programme, by: blinry, Cory, Isi, Jasper, Loren, Mario, Nat, Olive, Paolo,
           Sara, Diego, Agus, Christoffer, Ronja, David, riley, Gargi, phoebe.
           Compiled by: Blinry
         </div>
+      </div>
+      <div class="zine">
         <div class="zineImage">
-          <!-- <img src="zines/doodle-zine.png"> -->
-          <img src="http://pleek.net/images/projects/36/image_1.png">
+          <img src="zines/thumbs/zine2_thumb.jpg">
+        </div>
+        <div class="zineInfo">
+          INFO ZINE 2
         </div>
       </div>
+      <div class="zine">
+        <div class="zineImage">
+          <img src="zines/thumbs/zine3_thumb.jpg">
+        </div>
+        <div class="zineInfo">
+          INFO ZINE 3
+        </div>
+      </div>
+      <div class="zine">
+        <div class="zineImage">
+          <img src="zines/thumbs/zine4_thumb.jpg">
+        </div>
+        <div class="zineInfo">
+          INFO ZINE 4
+        </div>
+      </div>
+      <div class="zine">
+        <div class="zineImage">
+          <img src="zines/thumbs/zine5_thumb.jpg">
+        </div>
+        <div class="zineInfo">
+          INFO ZINE 5
+        </div>
+      </div>
+      <div class="zine">
+        <div class="zineImage">
+          <img src="zines/thumbs/zine6_thumb.jpg">
+        </div>
+        <div class="zineInfo">
+          INFO ZINE 2
+        </div>
+      </div>
+
+      <!-- ZINE INFO DISPLAY -->
+
+      <div id="zineInfoDisplay">
+        HERE THE INFO
+      </div>
     </div>
+
+
 
 
   </div>
 
   <script>
 
-    // turn.js FLIPBOOK STUFF - BEGIN -------------------
+    // ZINE THUMB INTERACTION
+    var zineInfoDisplay = $("#zineInfoDisplay");
+    var zineThumbs = $(".zine");
 
+    // MOUSE HOVER
+    zineThumbs.mouseenter(function(){
+      var info = $(this).children(".zineInfo").text();
+      zineInfoDisplay.text(info);
+    });
+
+
+    // MOUSE CLICK
+    for (let i = 0; i < zineThumbs.length; i++) {
+      zineThumbs.eq(i).click(function(){
+        getFlipbook(i + 1);
+        updateThumbSelection(i);
+      });
+      
+    }
+
+    function getFlipbook(index){
+      console.log("Showing FlipBook => " + index);
+    }
+
+    function updateThumbSelection(index){
+      for (let i = 0; i < zineThumbs.length; i++) {
+        if(index == i){
+          zineThumbs.eq(i).addClass("selected").fadeIn(500);
+        } else {
+          zineThumbs.eq(i).removeClass("selected");
+        }
+      }
+    }
+
+  </script>
+
+  <script>
+
+    // turn.js FLIPBOOK STUFF - BEGIN -------------------
+    /*
     $("#flipbook").turn({
       width: 400,
       height: 300,
@@ -86,6 +173,7 @@
     $("#nextBtn").click(function () {
       $("#flipbook").turn("next");
     });
+    */
 
     // turn.js FLIPBOOK STUFF - END -------------------
 
