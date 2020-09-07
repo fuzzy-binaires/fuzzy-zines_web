@@ -16,8 +16,9 @@ a{
 	color: white;
 }
 
-#subRegion {
+#allContainer {
 	margin-top: 10px;
+	/* width: 75%; */
 }
 
 .infoLine {
@@ -36,7 +37,35 @@ a{
 	margin: 10px 0;
 }
 
-.zineInfo{
-	color: var(--primary-green);
-
+#thumbContainer{
+	text-align: center;;
 }
+
+.zine{
+	display: inline-block;
+	margin: 5px;
+	padding: 3px;
+	border: none;
+}
+
+.selected{
+	border: thick solid var(--primary-green);
+}
+
+.zineImage{
+	height: 200px;
+}
+
+.zineImage > img{
+	margin: 0;
+}
+
+.zineInfo{
+	display: none;
+}
+
+#zineInfoDisplay{
+	color: var(--primary-green);
+	float: none;
+}
+
