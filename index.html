@@ -5,13 +5,17 @@
   <meta charset="utf-8">
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
   <title>B[ORDERS] Zines</title>
-  <script>
-    // var unityInstance = UnityLoader.instantiate("unityContainer", "%UNITY_WEBGL_BUILD_URL%");
-  </script>
+
+  <script src="https://code.jquery.com/jquery-3.5.1.min.js"
+    integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+
+  <script type="text/javascript" src="https://raw.github.com/blasten/turn.js/master/turn.min.js"></script>
 
   <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/flipbook-style.css">
+
 </head>
 
 <body>
@@ -41,17 +45,52 @@
     <div id="zineContainer">
       <div class="zine">
         <div class="zineInfo">
-          Drawings done during the 1 week programme, by: blinry, Cory, Isi, Jasper, Loren, Mario, Nat, Olive, Paolo, Sara, Diego, Agus, Christoffer, Ronja, David, riley, Gargi, phoebe.
+          Drawings done during the 1 week programme, by: blinry, Cory, Isi, Jasper, Loren, Mario, Nat, Olive, Paolo,
+          Sara, Diego, Agus, Christoffer, Ronja, David, riley, Gargi, phoebe.
           Compiled by: Blinry
         </div>
         <div class="zineImage">
-          <img src="zines/doodle-zine.png">
+          <!-- <img src="zines/doodle-zine.png"> -->
+          <img src="http://pleek.net/images/projects/36/image_1.png">
         </div>
       </div>
     </div>
 
 
   </div>
+
+  <script>
+
+    // turn.js FLIPBOOK STUFF - BEGIN -------------------
+
+    $("#flipbook").turn({
+      width: 400,
+      height: 300,
+      autoCenter: true
+    });
+
+    $("#pageFld").val($("#flipbook").turn("page"));
+
+    $("#flipbook").bind("turned", function (event, page, view) {
+      $("#pageFld").val(page);
+    });
+
+    $("#pageFld").change(function () {
+      $("#flipbook").turn("page", $(this).val());
+    });
+
+    $("#prevBtn").click(function () {
+      $("#flipbook").turn("previous");
+    });
+
+    $("#nextBtn").click(function () {
+      $("#flipbook").turn("next");
+    });
+
+    // turn.js FLIPBOOK STUFF - END -------------------
+
+
+  </script>
 </body>
 
 </html>
