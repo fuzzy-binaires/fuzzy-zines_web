@@ -1,13 +1,14 @@
+#flipbookContainer {
+  width: 50%;
+  margin: 0 auto;
+}
+
 .hard {
 	background-color: #00F;
-	background-color: url("http://pleek.net/images/projects/36/image_1.png");
-
 }
 
 .pg1 {
 	background-color: #FF0;
-	background-image: url("http://pleek.net/images/projects/36/image_1.png");
-
 }
 
 .pg2 {
