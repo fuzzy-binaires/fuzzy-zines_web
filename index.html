@@ -116,6 +116,8 @@
 
   <script>
 
+    var selectedFlipBook = 0;
+
     // ZINE THUMB INTERACTION
     var zineInfoDisplay = $("#zineInfoDisplay");
     var zineThumbs = $(".zine");
@@ -130,14 +132,19 @@
     // MOUSE CLICK
     for (let i = 0; i < zineThumbs.length; i++) {
       zineThumbs.eq(i).click(function(){
-        getFlipbook(i + 1);
+        getFlipbook(i);
         updateThumbSelection(i);
       });
       
     }
 
     function getFlipbook(index){
-      console.log("Showing FlipBook => " + index);
+      //console.log("Showing FlipBook => " + index);
+      selectedFlipBook = index;
+      updateFlipBook();
+
+      //console.log(zines);
+
     }
 
     function updateThumbSelection(index){

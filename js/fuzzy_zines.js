@@ -1,32 +1,21 @@
 
 
-$( init );
+$(init);
 
-var zines = ['membrane_phoebe'];
+var zines = ['membrane_phoebe', 'membrane_phoebe2'];
 
 function init() {
 
- let path = 'zines/'+zines[0]+ '/';
- $('#flipbookContainer')
-    .append($('<div id="flipbook"/>')
-        .append($('<div/>',{'class':'hard'}).css({'background-image': 'url(' + path + 'FRONT.png)'}))
-        .append($('<div/>',{'class':'hard'}).css({'background-image': 'url(' + path + 'INNERFRONT.png)'}))
-        .append($('<div/>',{'class':'pg1'}).css({'background-image': 'url(' + path + '1.png)'}))
-        .append($('<div/>',{'class':'pg2'}).css({'background-image': 'url(' + path + '2.png)'}))
-        .append($('<div/>',{'class':'pg3'}).css({'background-image': 'url(' + path + '3.png)'}))
-        .append($('<div/>',{'class':'pg4'}).css({'background-image': 'url(' + path + '4.png)'}))
-        .append($('<div/>',{'class':'pg5'}).css({'background-image': 'url(' + path + '5.png)'}))
-
-              );
-
+  initFlipBook();
   run();
 }
 
-function run()
-{
+function run() {
+
   let fb = $("#flipbookContainer").children();
 
-  fb.turn({
+  if (fb.length != 0) {
+    fb.turn({
       width: 800,
       height: 600,
       autoCenter: true
@@ -49,6 +38,48 @@ function run()
     $("#nextBtn").click(function () {
       fb.turn("next");
     });
+  }
+}
+
+function initFlipBook() {
+
+  // console.log("SelectedFlipBook: " + selectedFlipBook);
+
+  let path = 'zines/' + zines[selectedFlipBook] + '/';
+
+  $('#flipbookContainer')
+    .append($('<div id="flipbook"/>')
+      .append($('<div/>', { 'class': 'hard' }).css({ 'background-image': 'url(' + path + 'FRONT.png)' }))
+      .append($('<div/>', { 'class': 'hard' }).css({ 'background-image': 'url(' + path + 'INNERFRONT.png)' }))
+      .append($('<div/>', { 'class': 'pg1' }).css({ 'background-image': 'url(' + path + '1.png)' }))
+      .append($('<div/>', { 'class': 'pg2' }).css({ 'background-image': 'url(' + path + '2.png)' }))
+      .append($('<div/>', { 'class': 'pg3' }).css({ 'background-image': 'url(' + path + '3.png)' }))
+      .append($('<div/>', { 'class': 'pg4' }).css({ 'background-image': 'url(' + path + '4.png)' }))
+      .append($('<div/>', { 'class': 'pg5' }).css({ 'background-image': 'url(' + path + '5.png)' }))
+
+    );
+
+}
+
+function updateFlipBook() {
+
+  // console.log("SelectedFlipBook: " + selectedFlipBook);
+
+  let path = 'zines/' + zines[selectedFlipBook] + '/';
+
+
+      
+    $("#flipbookContainer").find('[page="1"] > div > div').css('background-image', 'url(' + path + 'FRONT.png)');
+    // .append($('<div/>', { 'class': 'hard' }).css({ 'background-image': 'url(' + path + 'FRONT.png)' }))
+
+      // .append($('<div/>', { 'class': 'hard' }).css({ 'background-image': 'url(' + path + 'INNERFRONT.png)' }))
+      // .append($('<div/>', { 'class': 'pg1' }).css({ 'background-image': 'url(' + path + '1.png)' }))
+      // .append($('<div/>', { 'class': 'pg2' }).css({ 'background-image': 'url(' + path + '2.png)' }))
+      // .append($('<div/>', { 'class': 'pg3' }).css({ 'background-image': 'url(' + path + '3.png)' }))
+      // .append($('<div/>', { 'class': 'pg4' }).css({ 'background-image': 'url(' + path + '4.png)' }))
+      // .append($('<div/>', { 'class': 'pg5' }).css({ 'background-image': 'url(' + path + '5.png)' }))
+
+
 }
 
 //run();
