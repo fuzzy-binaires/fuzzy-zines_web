@@ -116,7 +116,6 @@
 
   <script>
 
-    var selectedFlipBook = 0;
 
     // ZINE THUMB INTERACTION
     var zineInfoDisplay = $("#zineInfoDisplay");
@@ -139,12 +138,7 @@
     }
 
     function getFlipbook(index){
-      //console.log("Showing FlipBook => " + index);
-      selectedFlipBook = index;
-      updateFlipBook();
-
-      //console.log(zines);
-
+      updateFlipBook(index); // AT fuzzy_zines.js
     }
 
     function updateThumbSelection(index){
