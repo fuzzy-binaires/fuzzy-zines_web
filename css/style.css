@@ -8,11 +8,12 @@ body {
 	width: 100%;
 	height: 100%;
 	text-align: center;
+	margin: 5px;
 	background-color: black;
 	font-family: 'Space Mono', monospace;
 }
 
-a{
+a {
 	color: white;
 }
 
@@ -25,47 +26,75 @@ a{
 	color: var(--primary-green);
 }
 
-.imageDiv{
+.imageDiv {
 	top: 10px;
 	left: 30px;
 	display: inline;
 }
 
-#programmeName{
+#programmeName {
 	font-size: 20px;
 	color: var(--back-color);
 	margin: 10px 0;
 }
 
-#thumbContainer{
-	text-align: center;;
+#thumbContainer {
+	width: 95%;
+	margin: auto;
+	text-align: center;
+	border: thin dashed var(--primary-green);
 }
 
-.zine{
+.zine {
 	display: inline-block;
 	margin: 5px;
 	padding: 3px;
 	border: none;
 }
 
-.selected{
+.selected {
 	border: thick solid var(--primary-green);
 }
 
-.zineImage{
+.zineImage {
 	height: 200px;
 }
 
-.zineImage > img{
+.zineImage>img {
 	margin: 0;
 }
 
-.zineInfo{
+.zineInfo {
 	display: none;
 }
 
-#zineInfoDisplay{
+#zineInfoDisplay {
 	color: var(--primary-green);
 	float: none;
+
+	border: thin solid var(--primary-green);
+	border-width: 1px 0 0 0;
+	margin: 20px;
+
 }
 
+#textContainer {
+	text-align: center;
+	width: 100%;
+	color: var(--primary-green);
+	/* padding: 50px;; */
+}
+
+.textRow {
+	display: flex;
+}
+
+.textColumn {
+	flex: 50%;
+	margin: 40px;
+	text-align: justify;
+}
+
+h2 {
+	color: #ccc;
+}
