@@ -81,7 +81,7 @@
             We chose the format of the zine because it allowed for a physical/material/virtual production, thus blending
             borders of paper and screen means of expression. We included sketches and drawings made in Big Blue Button,
             and collaged, scanned and photographed from paper. In line with our engagement of mostly open source tools
-            throughout the week, we used the Electric Zine Maker to create the zines.
+            throughout the week, we used the <a href="https://alienmelon.itch.io/electric-zine-maker" target="_blank"> Electric Zine Maker</a> to create the zines.
           </p>
           <p>
             The final result is a collection of ideas that grew between all participants collectively that exhibit a
@@ -91,79 +91,88 @@
       </div>
     </div>
 
-    <div id="thumbContainer">
+
+    <div id="zineSystemContainer">
+      <div id="thumbContainer">
 
 
-      <!-- ZINE THUMBS  -->
+        <!-- ZINE THUMBS  -->
 
 
-      <div class="zine">
-        <div class="zineImage">
-          <img src="zines/thumbs/zine1_thumb.jpg">
+        <div class="zine">
+          <div class="zineImage">
+            <img src="zines/thumbs/zine1_thumb.jpg">
+          </div>
+          <div class="zineInfo">
+            <strong>Membranes</strong>, <small>by Phoebe</small>
+          </div>
         </div>
-        <div class="zineInfo">
-          Drawings done during the 1 week programme, by: blinry, Cory, Isi, Jasper, Loren, Mario, Nat, Olive, Paolo,
-          Sara, Diego, Agus, Christoffer, Ronja, David, riley, Gargi, phoebe.
-          Compiled by: Blinry
+        <div class="zine">
+          <div class="zineImage">
+            <img src="zines/thumbs/zine2_thumb.jpg">
+          </div>
+          <div class="zineInfo">
+            <strong>Person Bites Dog</strong>, <small>by Sara</small>
+          </div>
         </div>
+        <div class="zine">
+          <div class="zineImage">
+            <img src="zines/thumbs/zine3_thumb.jpg">
+          </div>
+          <div class="zineInfo">
+          <small>During the pauses, BigBlueButton became our playground, by: Cory, Isi, Jasper, Loren, Mario, Nat, blinry,
+            Olive, Paolo,
+            Sara, Diego, Agus, Christoffer, Ronja, David, riley, Gargi, phoebe.
+            <br>
+            <strong>Compiled by Blinry</strong></small>
+          </div>
+        </div>
+        <div class="zine">
+          <div class="zineImage">
+
+            <img src="zines/thumbs/zine4_thumb.jpg">
+          </div>
+          <div class="zineInfo">
+            <strong>Crumbling 1</strong>, <small>by Mario and Ronja</small>
+          </div>
+        </div>
+        <div class="zine">
+          <div class="zineImage">
+            <img src="zines/thumbs/zine5_thumb.jpg">
+          </div>
+          <div class="zineInfo">
+            <strong>Crumbling 2</strong>,<small> by Mario and Ronja</small>
+          </div>
+        </div>
+        <div class="zine">
+          <div class="zineImage">
+            <img src="zines/thumbs/zine6_thumb.jpg">
+          </div>
+          <div class="zineInfo">
+            <strong>Border Crossing Tech Kit</strong>, <small>by Jasper, Isi and Agustin</small>
+          </div>
+        </div>
+
+        <!-- ZINE INFO DISPLAY -->
+
+        <div id="zineInfoDisplay">
+        </div>
+
+
       </div>
-      <div class="zine">
-        <div class="zineImage">
-          <img src="zines/thumbs/zine2_thumb.jpg">
-        </div>
-        <div class="zineInfo">
-          INFO ZINE 2
-        </div>
-      </div>
-      <div class="zine">
-        <div class="zineImage">
-          <img src="zines/thumbs/zine3_thumb.jpg">
-        </div>
-        <div class="zineInfo">
-          INFO ZINE 3
-        </div>
-      </div>
-      <div class="zine">
-        <div class="zineImage">
 
-          <img src="zines/thumbs/zine4_thumb.jpg">
-        </div>
-        <div class="zineInfo">
-          INFO ZINE 4
 
-        </div>
-      </div>
-      <div class="zine">
-        <div class="zineImage">
-          <img src="zines/thumbs/zine5_thumb.jpg">
-        </div>
-        <div class="zineInfo">
-          INFO ZINE 5
-        </div>
-      </div>
-      <div class="zine">
-        <div class="zineImage">
-          <img src="zines/thumbs/zine6_thumb.jpg">
-        </div>
-        <div class="zineInfo">
-          INFO ZINE 2
-        </div>
+
+
+      <div id="downloadZineContainer">
+        <p>Download this zine, print it and fold it: <span id="downloadZineName"><a
+              href="www.pleek.net">ZineName</a></span></p>
       </div>
 
-      <!-- ZINE INFO DISPLAY -->
+      <div id="flipbookContainer"></div>
 
-      <div id="zineInfoDisplay">
-        HERE THE INFO
-      </div>
-
-      
     </div>
 
-
-
-
-
-    <div id="flipbookContainer"></div>
 
     <script>
 
@@ -171,19 +180,36 @@
       // ZINE THUMB INTERACTION
       var zineInfoDisplay = $("#zineInfoDisplay");
       var zineThumbs = $(".zine");
+      var selectedZine = 0;
+
+      updateThumbSelection(selectedZine);
+      updateDownloadZine(selectedZine);
+
+      // SET ZINE INFO FOR FIRST ZINE
+      var info = $(".zine").eq(selectedZine).children(".zineInfo").html();
+      zineInfoDisplay.html(info);
+
 
       // MOUSE HOVER
       zineThumbs.mouseenter(function () {
-        var info = $(this).children(".zineInfo").text();
-        zineInfoDisplay.text(info);
+        var info = $(this).children(".zineInfo").html();
+        zineInfoDisplay.html(info);
+      });
+
+
+      zineThumbs.mouseleave(function () {
+        var info = $(".zine").eq(selectedZine).children(".zineInfo").html();
+        zineInfoDisplay.html(info);
       });
 
 
       // MOUSE CLICK
       for (let i = 0; i < zineThumbs.length; i++) {
         zineThumbs.eq(i).click(function () {
-          getFlipbook(i);
-          updateThumbSelection(i);
+          selectedZine = i;
+          getFlipbook(selectedZine);
+          updateThumbSelection(selectedZine);
+          updateDownloadZine(selectedZine);
         });
 
       }
@@ -200,6 +226,18 @@
             zineThumbs.eq(i).removeClass("selected");
           }
         }
+      }
+
+      function updateDownloadZine(index) {
+        var name = ["Membranes", "Person Bites Dog", "Doodle", "Crumbling 1", "Crumbling 2", "Border Crossing Tech Kit"];
+        var docName = ["membranes_zine", "person-bites-dog_zine", "doodle_zine", "crumbling-1_zine", "crumbling-2_zine", "border-crossing-tech_zine"];
+
+        var selectedUrl = "zines/to-print/" + docName[index] + ".pdf";
+
+
+        $("#downloadZineName").html("<a href='" + selectedUrl + "' target='_blank'>" + name[index] + "</a>")
+
+
       }
     </script>
 

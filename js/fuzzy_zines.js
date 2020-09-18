@@ -2,7 +2,7 @@
 
 $(init);
 
-var zines = ['membrane', 'human-bites-dog', 'doodle', 'crumbling1', 'crumbling2', 'border-crossing-kit'];
+var zines = ['membrane', 'person-bites-dog', 'doodle', 'crumbling1', 'crumbling2', 'border-crossing-kit'];
 
 function init() {
 

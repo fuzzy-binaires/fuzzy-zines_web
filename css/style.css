@@ -17,6 +17,10 @@ a {
 	color: white;
 }
 
+p {
+	color: var(--primary-green);
+}
+
 #allContainer {
 	margin-top: 10px;
 	/* width: 75%; */
@@ -38,17 +42,22 @@ a {
 	margin: 10px 0;
 }
 
-#thumbContainer {
+#zineSystemContainer {
 	width: 95%;
 	margin: auto;
-	text-align: center;
 	border: thin dashed var(--primary-green);
+}
+
+#thumbContainer {
+	/* width: 95%; */
+	margin: auto;
+	text-align: center;
 }
 
 .zine {
 	display: inline-block;
-	margin: 5px;
-	padding: 3px;
+	/* margin: 5px; */
+	padding: 10px;
 	border: none;
 }
 
@@ -71,11 +80,13 @@ a {
 #zineInfoDisplay {
 	color: var(--primary-green);
 	float: none;
-
 	border: thin solid var(--primary-green);
 	border-width: 1px 0 0 0;
-	margin: 20px;
-
+	padding: 20px;
+	font-size: 18px;
+	color: white;
+	width: 80%;
+	margin: auto;
 }
 
 #textContainer {
@@ -97,4 +108,8 @@ a {
 
 h2 {
 	color: #ccc;
+}
+
+#downloadZineContainer {
+	margin-bottom: 20px;
 }
