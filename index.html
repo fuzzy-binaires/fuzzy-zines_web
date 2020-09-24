@@ -20,6 +20,10 @@
 </head>
 
 <body>
+
+  <div class="fuzzyHomePill pill-top-right"><a href="http://www.fuzzybinaires.org" target="_blank"> Fuzzy Binaires Home</a></div>
+
+
   <div id="allContainer">
     <div id="programmeName">
       B[ORDERS]
@@ -50,8 +54,8 @@
           </p>
           <p>
             Virtually situated in Berlin, the second most surveilled city in the EU, and run by the techno-artistic
-            collective Fuzzy Binaires, we aimed to create a playful space-time for decolonial, resistant computing
-            projects. Participation was free of charge and kindly funded by Hauptstadtkulturfonds Berlin. [read more]
+            collective <a href="http://www.fuzzybinaires.org" target="_blank">Fuzzy Binaires</a>, we aimed to create a playful space-time for decolonial, resistant computing
+            projects. Participation was free of charge and kindly funded by <a href="https://hauptstadtkulturfonds.berlin.de" target="_blank"> Hauptstadtkulturfonds Berlin</a>.
           </p>
           <p>
             What can be learned from taking positions that refuse the logic of physical and digital borders? Virtually
@@ -81,7 +85,8 @@
             We chose the format of the zine because it allowed for a physical/material/virtual production, thus blending
             borders of paper and screen means of expression. We included sketches and drawings made in Big Blue Button,
             and collaged, scanned and photographed from paper. In line with our engagement of mostly open source tools
-            throughout the week, we used the <a href="https://alienmelon.itch.io/electric-zine-maker" target="_blank"> Electric Zine Maker</a> to create the zines.
+            throughout the week, we used the <a href="https://alienmelon.itch.io/electric-zine-maker" target="_blank">
+              Electric Zine Maker</a> to create the zines.
           </p>
           <p>
             The final result is a collection of ideas that grew between all participants collectively that exhibit a
@@ -104,7 +109,7 @@
             <img src="zines/thumbs/zine1_thumb.jpg">
           </div>
           <div class="zineInfo">
-            <strong>Membranes</strong>, <small>by Phoebe</small>
+            <strong>Membranes</strong>, <small>by Olive</small>
           </div>
         </div>
         <div class="zine">
@@ -112,7 +117,7 @@
             <img src="zines/thumbs/zine2_thumb.jpg">
           </div>
           <div class="zineInfo">
-            <strong>Person Bites Dog</strong>, <small>by Sara</small>
+            <strong>Person Bites Dog</strong>, <small>by Natalia, Paolo, Cory, Sara and Diego</small>
           </div>
         </div>
         <div class="zine">
@@ -120,11 +125,12 @@
             <img src="zines/thumbs/zine3_thumb.jpg">
           </div>
           <div class="zineInfo">
-          <small>During the pauses, BigBlueButton became our playground, by: Cory, Isi, Jasper, Loren, Mario, Nat, blinry,
-            Olive, Paolo,
-            Sara, Diego, Agus, Christoffer, Ronja, David, riley, Gargi, phoebe.
-            <br>
-            <strong>Compiled by Blinry</strong></small>
+            <small>During the pauses, BigBlueButton became our playground, by: Cory, Isi, Jasper, Loren, Mario, Nat,
+              blinry,
+              Olive, Paolo,
+              Sara, Diego, Agus, Christoffer, Ronja, David, riley, Gargi, phoebe.
+              <br>
+              <strong>Compiled by Blinry</strong></small>
           </div>
         </div>
         <div class="zine">
@@ -133,7 +139,7 @@
             <img src="zines/thumbs/zine4_thumb.jpg">
           </div>
           <div class="zineInfo">
-            <strong>Crumbling 1</strong>, <small>by Mario and Ronja</small>
+            <strong>Crumbling Model of Computation 1</strong>, <small>by Loren, Mario and Isi</small>
           </div>
         </div>
         <div class="zine">
@@ -141,7 +147,7 @@
             <img src="zines/thumbs/zine5_thumb.jpg">
           </div>
           <div class="zineInfo">
-            <strong>Crumbling 2</strong>,<small> by Mario and Ronja</small>
+            <strong> Crumbling Model of Computation 2</strong>,<small> by Loren, Mario and Isi</small>
           </div>
         </div>
         <div class="zine">
@@ -165,85 +171,85 @@
 
 
       <div id="downloadZineContainer">
-        <p>Download this zine, print it and fold it: <span id="downloadZineName"><a
-              href="www.pleek.net">ZineName</a></span></p>
+        <p>Download <span id="downloadZineName"><a
+          href="www.pleek.net">ZineName</a></span> zine, print it and fold it with <a href="zines/fold-instructions.html" target="_blank"> these instructions</a>: </p>
       </div>
 
       <div id="flipbookContainer"></div>
 
     </div>
+  </div>
+
+  <script>
 
 
-    <script>
+    // ZINE THUMB INTERACTION
+    var zineInfoDisplay = $("#zineInfoDisplay");
+    var zineThumbs = $(".zine");
+    var selectedZine = 0;
+
+    updateThumbSelection(selectedZine);
+    updateDownloadZine(selectedZine);
+
+    // SET ZINE INFO FOR FIRST ZINE
+    var info = $(".zine").eq(selectedZine).children(".zineInfo").html();
+    zineInfoDisplay.html(info);
 
 
-      // ZINE THUMB INTERACTION
-      var zineInfoDisplay = $("#zineInfoDisplay");
-      var zineThumbs = $(".zine");
-      var selectedZine = 0;
+    // MOUSE HOVER
+    zineThumbs.mouseenter(function () {
+      var info = $(this).children(".zineInfo").html();
+      zineInfoDisplay.html(info);
+    });
 
-      updateThumbSelection(selectedZine);
-      updateDownloadZine(selectedZine);
 
-      // SET ZINE INFO FOR FIRST ZINE
+    zineThumbs.mouseleave(function () {
       var info = $(".zine").eq(selectedZine).children(".zineInfo").html();
       zineInfoDisplay.html(info);
+    });
 
 
-      // MOUSE HOVER
-      zineThumbs.mouseenter(function () {
-        var info = $(this).children(".zineInfo").html();
-        zineInfoDisplay.html(info);
+    // MOUSE CLICK
+    for (let i = 0; i < zineThumbs.length; i++) {
+      zineThumbs.eq(i).click(function () {
+        selectedZine = i;
+        getFlipbook(selectedZine);
+        updateThumbSelection(selectedZine);
+        updateDownloadZine(selectedZine);
       });
 
+    }
 
-      zineThumbs.mouseleave(function () {
-        var info = $(".zine").eq(selectedZine).children(".zineInfo").html();
-        zineInfoDisplay.html(info);
-      });
+    function getFlipbook(index) {
+      changeFlipBook(index); // AT fuzzy_zines.js
+    }
 
-
-      // MOUSE CLICK
+    function updateThumbSelection(index) {
       for (let i = 0; i < zineThumbs.length; i++) {
-        zineThumbs.eq(i).click(function () {
-          selectedZine = i;
-          getFlipbook(selectedZine);
-          updateThumbSelection(selectedZine);
-          updateDownloadZine(selectedZine);
-        });
-
-      }
-
-      function getFlipbook(index) {
-        changeFlipBook(index); // AT fuzzy_zines.js
-      }
-
-      function updateThumbSelection(index) {
-        for (let i = 0; i < zineThumbs.length; i++) {
-          if (index == i) {
-            zineThumbs.eq(i).addClass("selected");
-          } else {
-            zineThumbs.eq(i).removeClass("selected");
-          }
+        if (index == i) {
+          zineThumbs.eq(i).addClass("selected");
+        } else {
+          zineThumbs.eq(i).removeClass("selected");
         }
       }
+    }
 
-      function updateDownloadZine(index) {
-        var name = ["Membranes", "Person Bites Dog", "Doodle", "Crumbling 1", "Crumbling 2", "Border Crossing Tech Kit"];
-        var docName = ["membranes_zine", "person-bites-dog_zine", "doodle_zine", "crumbling-1_zine", "crumbling-2_zine", "border-crossing-tech_zine"];
+    function updateDownloadZine(index) {
+      var name = ["Membranes", "Person Bites Dog", "Doodle", "Crumbling Model of Computation 1", "Crumbling Crumbling Model of Computation 2", "Border Crossing Tech Kit"];
+      var docName = ["membranes_zine", "person-bites-dog_zine", "doodle_zine", "crumbling-1_zine", "crumbling-2_zine", "border-crossing-tech_zine"];
 
-        var selectedUrl = "zines/to-print/" + docName[index] + ".pdf";
-
-
-        $("#downloadZineName").html("<a href='" + selectedUrl + "' target='_blank'>" + name[index] + "</a>")
+      var selectedUrl = "zines/to-print/" + docName[index] + ".pdf";
 
 
-      }
-    </script>
+      $("#downloadZineName").html("<a href='" + selectedUrl + "' target='_blank'>" + name[index] + "</a>")
+
+
+    }
+  </script>
 
 
 
-    <script src="js/fuzzy_zines.js"> </script>
+  <script src="js/fuzzy_zines.js"> </script>
 </body>
 
 
